@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<table align="center" border="1" cellpadding="5" cellspacing="5">
+ <tr>
+   <th>First Name</th>
+   <th>Last Name</th>
+   <th>Address</th>
+   <th>Phone no </th>
+ </tr>
+ <tr th:each="objSt:${listStd}">
+   <td><span th:text="${objSt.fname}"></span></td>
+   <td><span th:text="${objSt.lname}"></span></td>
+   <td><span th:text="${objSt.address}"></span></td>
+   <td><span th:text="${objSt.phoneno}"></span></td>
+ </tr>
+</table>
+</body>
+</html>
