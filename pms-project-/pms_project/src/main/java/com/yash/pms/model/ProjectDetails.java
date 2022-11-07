@@ -8,15 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
-@Setter
-@Getter
-@AllArgsConstructor
 public class ProjectDetails {
 
 	@Id
@@ -93,6 +85,8 @@ public class ProjectDetails {
 	public ProjectDetails() {
 		super();
 	}
+	
+	
 	public ProjectDetails(int projectId, String projectName, String projectDescription, String technology,
 			String erDiagram, Date startDate, Date endDate, Date createdOn, int teamSize) {
 		super();
@@ -106,5 +100,15 @@ public class ProjectDetails {
 		this.createdOn = createdOn;
 		this.teamSize = teamSize;
 	}
+	@Override
+	public String toString() {
+		return "ProjectDetails [projectId=" + projectId + ", projectName=" + projectName + ", projectDescription="
+				+ projectDescription + ", technology=" + technology + ", erDiagram=" + erDiagram + ", startDate="
+				+ startDate + ", endDate=" + endDate + ", createdOn=" + createdOn + ", teamSize=" + teamSize + "]";
+	}
 	
+
+
+
 }
+

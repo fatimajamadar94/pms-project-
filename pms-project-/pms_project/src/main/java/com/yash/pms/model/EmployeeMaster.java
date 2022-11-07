@@ -2,7 +2,7 @@ package com.yash.pms.model;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,45 +10,38 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
-@Setter
-@Getter
-@AllArgsConstructor
 public class EmployeeMaster {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer empOfficialId;
-	private String ename;
+	private int empOfficialId;
+	private String eName;
 	private String emailId;
 	private String empId;
-	private Integer phone;
+	private long phone;
 	private Date joiningDate;
 	private Date createdDate;
 	private Date updatedDate;
 	private String userName;
 	private String password;
 	private String empProjectStatus;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
 	private DepartmentMaster deptdepMaster;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
 	private DesignationMaster designationMaster;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
 	private RoleMaster roleMaster;
-	public Integer getEmpOfficialId() {
+	public int getEmpOfficialId() {
 		return empOfficialId;
 	}
-	public void setEmpOfficialId(Integer empOfficialId) {
+	public void setEmpOfficialId(int empOfficialId) {
 		this.empOfficialId = empOfficialId;
 	}
-	public String getEname() {
-		return ename;
+	public String geteName() {
+		return eName;
 	}
-	public void setEname(String ename) {
-		this.ename = ename;
+	public void seteName(String ename) {
+		this.eName = ename;
 	}
 	public String getEmailId() {
 		return emailId;
@@ -62,10 +55,11 @@ public class EmployeeMaster {
 	public void setEmpId(String empId) {
 		this.empId = empId;
 	}
-	public Integer getPhone() {
+	
+	public long getPhone() {
 		return phone;
 	}
-	public void setPhone(Integer phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 	public Date getJoiningDate() {
@@ -122,13 +116,14 @@ public class EmployeeMaster {
 	public void setRoleMaster(RoleMaster roleMaster) {
 		this.roleMaster = roleMaster;
 	}
-	public EmployeeMaster(Integer empOfficialId, String ename, String emailId, String empId, Integer phone,
+	
+	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, int phone,
 			Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
 			String empProjectStatus, DepartmentMaster deptdepMaster, DesignationMaster designationMaster,
 			RoleMaster roleMaster) {
 		super();
 		this.empOfficialId = empOfficialId;
-		this.ename = ename;
+		this.eName = eName;
 		this.emailId = emailId;
 		this.empId = empId;
 		this.phone = phone;

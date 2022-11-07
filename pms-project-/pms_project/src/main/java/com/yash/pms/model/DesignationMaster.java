@@ -6,20 +6,65 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
-@Setter
-@Getter
-@AllArgsConstructor
 public class DesignationMaster {
 	@Id
 	@Column
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private int deptId;
-	private String deptName;
-	private String DeptDescp;
+	private int designId;
+	private String designName;
+	private String designDescp;
 	
+	
+ public	DesignationMaster(){
+		
+	}
+
+
+public DesignationMaster(int designId, String designName, String designDescp) {
+	super();
+	this.designId = designId;
+	this.designName = designName;
+	this.designDescp = designDescp;
+}
+
+
+public int getDesignId() {
+	return designId;
+}
+
+
+public void setDesignId(int designId) {
+	this.designId = designId;
+}
+
+
+public String getDesignName() {
+	return designName;
+}
+
+
+public void setDesignName(String designName) {
+	this.designName = designName;
+}
+
+
+public String getDesignDescp() {
+	return designDescp;
+}
+
+
+public void setDesignDescp(String designDescp) {
+	this.designDescp = designDescp;
+}
+
+
+@Override
+public String toString() {
+	return "DesignationMaster [designId=" + designId + ", designName=" + designName + ", designDescp=" + designDescp
+			+ "]";
+}
+	
+ 
+ 
 }
