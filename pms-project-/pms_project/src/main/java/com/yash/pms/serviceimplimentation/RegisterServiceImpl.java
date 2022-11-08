@@ -15,7 +15,7 @@ public class RegisterServiceImpl implements RegisterService {
 
 	
 @Autowired
-RegisterDao registerDao;
+ private RegisterDao registerDao;
 
 @Override
 public void saveRegister(EmployeeMaster employeeMaster) {

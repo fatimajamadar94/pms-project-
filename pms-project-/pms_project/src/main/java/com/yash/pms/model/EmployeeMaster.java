@@ -8,7 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class EmployeeMaster {
@@ -26,11 +29,24 @@ public class EmployeeMaster {
 	private String password;
 	private String empProjectStatus;
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+	@JoinColumn(name="deptId")
+	@JsonIgnore
 	private DepartmentMaster deptdepMaster;
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+	@JoinColumn(name="designId")
+	@JsonIgnore
 	private DesignationMaster designationMaster;
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+	@JoinColumn(name="roleId")
+	@JsonIgnore
 	private RoleMaster roleMaster;
+	
+	public EmployeeMaster() {
+		
+	}
+	
+	
+	
 	public int getEmpOfficialId() {
 		return empOfficialId;
 	}
