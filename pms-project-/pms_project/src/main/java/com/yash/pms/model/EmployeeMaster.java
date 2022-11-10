@@ -21,7 +21,9 @@ public class EmployeeMaster {
 	private String eName;
 	private String emailId;
 	private String empId;
-	private long phone;
+	private Integer phone;
+	private String gender;
+	private Date birthdate;
 	private Date joiningDate;
 	private Date createdDate;
 	private Date updatedDate;
@@ -41,9 +43,8 @@ public class EmployeeMaster {
 	@JsonIgnore
 	private RoleMaster roleMaster;
 	
-	public EmployeeMaster() {
-		
-	}
+	
+	
 	
 	
 	
@@ -59,6 +60,49 @@ public class EmployeeMaster {
 	public void seteName(String ename) {
 		this.eName = ename;
 	}
+	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, Integer phone, String gender,
+			Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
+			String empProjectStatus, DepartmentMaster deptdepMaster, DesignationMaster designationMaster,
+			RoleMaster roleMaster) {
+		super();
+		this.empOfficialId = empOfficialId;
+		this.eName = eName;
+		this.emailId = emailId;
+		this.empId = empId;
+		this.phone = phone;
+		this.gender = gender;
+		this.birthdate = birthdate;
+		this.joiningDate = joiningDate;
+		this.createdDate = createdDate;
+		this.updatedDate = updatedDate;
+		this.userName = userName;
+		this.password = password;
+		this.empProjectStatus = empProjectStatus;
+		this.deptdepMaster = deptdepMaster;
+		this.designationMaster = designationMaster;
+		this.roleMaster = roleMaster;
+	}
+
+
+
+	public EmployeeMaster() {
+		super();
+	}
+
+
+
+	public Integer getPhone() {
+		return phone;
+	}
+
+
+
+	public void setPhone(Integer phone) {
+		this.phone = phone;
+	}
+
+
+
 	public String getEmailId() {
 		return emailId;
 	}
@@ -72,12 +116,6 @@ public class EmployeeMaster {
 		this.empId = empId;
 	}
 	
-	public long getPhone() {
-		return phone;
-	}
-	public void setPhone(long phone) {
-		this.phone = phone;
-	}
 	public Date getJoiningDate() {
 		return joiningDate;
 	}
@@ -133,25 +171,19 @@ public class EmployeeMaster {
 		this.roleMaster = roleMaster;
 	}
 	
-	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, int phone,
-			Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
-			String empProjectStatus, DepartmentMaster deptdepMaster, DesignationMaster designationMaster,
-			RoleMaster roleMaster) {
-		super();
-		this.empOfficialId = empOfficialId;
-		this.eName = eName;
-		this.emailId = emailId;
-		this.empId = empId;
-		this.phone = phone;
-		this.joiningDate = joiningDate;
-		this.createdDate = createdDate;
-		this.updatedDate = updatedDate;
-		this.userName = userName;
-		this.password = password;
-		this.empProjectStatus = empProjectStatus;
-		this.deptdepMaster = deptdepMaster;
-		this.designationMaster = designationMaster;
-		this.roleMaster = roleMaster;
+	public String getGender() {
+		return gender;
 	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public Date getBirthdate() {
+		return birthdate;
+	}
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+
+	
 		
 }

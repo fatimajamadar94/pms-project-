@@ -12,29 +12,37 @@ import com.yash.pms.service.RegisterService;
 
 @Service
 public class RegisterServiceImpl implements RegisterService {
-
-	
 @Autowired
- private RegisterDao registerDao;
-
-@Override
-public void saveRegister(EmployeeMaster employeeMaster) {
-	 registerDao.save(employeeMaster);
-}
-
-
-@Override
-public List<EmployeeMaster> getAllEmployee() {
-	
-	return registerDao.findAll();
-}
-
-
-//    @Override
-//	public int saveRegister(EmployeeMaster employeeMaster) {
-//            EmployeeMaster a=registerDao.save(employeeMaster);
-//		return a.getEmpOfficialId();
+RegisterDao registerDao;
+	@Override
+	public int saveRegister(EmployeeMaster employeeMaster) {
+          EmployeeMaster a=registerDao.save(employeeMaster);
+		return a.getEmpOfficialId();
+	}
+//	@Override
+//	public EmployeeMaster UserLogin(String username, String password) {
+//		// EmployeeMaster aa=registerDao.userLogin(username,password);
+//		return null;
 //	}
+	@Override
+	public EmployeeMaster fetchCustomerByEmail(String tempEmail) {
+		EmployeeMaster emp=registerDao.findByEmail(tempEmail);
+		return emp;
+	}
+	@Override
+	public EmployeeMaster addEmployee(EmployeeMaster employeeMaster) {
+		EmployeeMaster emp=registerDao.save(employeeMaster);
+		return emp;
+	}
+	public EmployeeMaster findByEmailAndPassword(String username, String password) {
+		EmployeeMaster emp=registerDao.findByEmailAndPassword(username,password);
 
-    
+		return emp;
+	}
+	@Override
+	public List<EmployeeMaster> getAllEmployee() {
+List<EmployeeMaster> list=registerDao.registerList();
+return list;
+	}
+
 }

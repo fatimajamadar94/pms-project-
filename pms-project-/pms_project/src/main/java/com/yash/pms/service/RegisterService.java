@@ -4,9 +4,20 @@ import java.util.List;
 
 import com.yash.pms.model.EmployeeMaster;
 
+
 public interface RegisterService {
 	
-	void saveRegister(EmployeeMaster employeeMaster);
+	int saveRegister(EmployeeMaster employeeMaster);
+
+	//EmployeeMaster UserLogin(String username, String password);
+
+	EmployeeMaster fetchCustomerByEmail(String tempEmail);
+
+	EmployeeMaster addEmployee(EmployeeMaster employeeMaster);
+
+	EmployeeMaster findByEmailAndPassword(String username, String password);
 
 	List<EmployeeMaster> getAllEmployee();
+
+
 }
