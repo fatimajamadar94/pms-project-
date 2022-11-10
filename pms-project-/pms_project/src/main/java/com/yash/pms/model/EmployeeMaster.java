@@ -2,27 +2,23 @@ package com.yash.pms.model;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Setter
-@Getter
-@AllArgsConstructor
 public class EmployeeMaster {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer empOfficialId;
-	private String ename;
+	private int empOfficialId;
+	private String eName;
 	private String emailId;
 	private String empId;
 	private Integer phone;
@@ -34,24 +30,79 @@ public class EmployeeMaster {
 	private String userName;
 	private String password;
 	private String empProjectStatus;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+	@JoinColumn(name="deptId")
+	@JsonIgnore
 	private DepartmentMaster deptdepMaster;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+	@JoinColumn(name="designId")
+	@JsonIgnore
 	private DesignationMaster designationMaster;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+	@JoinColumn(name="roleId")
+	@JsonIgnore
 	private RoleMaster roleMaster;
-	public Integer getEmpOfficialId() {
+	
+	
+	
+	
+	
+	
+	public int getEmpOfficialId() {
 		return empOfficialId;
 	}
-	public void setEmpOfficialId(Integer empOfficialId) {
+	public void setEmpOfficialId(int empOfficialId) {
 		this.empOfficialId = empOfficialId;
 	}
-	public String getEname() {
-		return ename;
+	public String geteName() {
+		return eName;
 	}
-	public void setEname(String ename) {
-		this.ename = ename;
+	public void seteName(String ename) {
+		this.eName = ename;
 	}
+	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, Integer phone, String gender,
+			Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
+			String empProjectStatus, DepartmentMaster deptdepMaster, DesignationMaster designationMaster,
+			RoleMaster roleMaster) {
+		super();
+		this.empOfficialId = empOfficialId;
+		this.eName = eName;
+		this.emailId = emailId;
+		this.empId = empId;
+		this.phone = phone;
+		this.gender = gender;
+		this.birthdate = birthdate;
+		this.joiningDate = joiningDate;
+		this.createdDate = createdDate;
+		this.updatedDate = updatedDate;
+		this.userName = userName;
+		this.password = password;
+		this.empProjectStatus = empProjectStatus;
+		this.deptdepMaster = deptdepMaster;
+		this.designationMaster = designationMaster;
+		this.roleMaster = roleMaster;
+	}
+
+
+
+	public EmployeeMaster() {
+		super();
+	}
+
+
+
+	public Integer getPhone() {
+		return phone;
+	}
+
+
+
+	public void setPhone(Integer phone) {
+		this.phone = phone;
+	}
+
+
+
 	public String getEmailId() {
 		return emailId;
 	}
@@ -64,12 +115,7 @@ public class EmployeeMaster {
 	public void setEmpId(String empId) {
 		this.empId = empId;
 	}
-	public Integer getPhone() {
-		return phone;
-	}
-	public void setPhone(Integer phone) {
-		this.phone = phone;
-	}
+	
 	public Date getJoiningDate() {
 		return joiningDate;
 	}
@@ -125,28 +171,6 @@ public class EmployeeMaster {
 		this.roleMaster = roleMaster;
 	}
 	
-	public EmployeeMaster(Integer empOfficialId, String ename, String emailId, String empId, Integer phone,
-			String gender, Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName,
-			String password, String empProjectStatus, DepartmentMaster deptdepMaster,
-			DesignationMaster designationMaster, RoleMaster roleMaster) {
-		super();
-		this.empOfficialId = empOfficialId;
-		this.ename = ename;
-		this.emailId = emailId;
-		this.empId = empId;
-		this.phone = phone;
-		this.gender = gender;
-		this.birthdate = birthdate;
-		this.joiningDate = joiningDate;
-		this.createdDate = createdDate;
-		this.updatedDate = updatedDate;
-		this.userName = userName;
-		this.password = password;
-		this.empProjectStatus = empProjectStatus;
-		this.deptdepMaster = deptdepMaster;
-		this.designationMaster = designationMaster;
-		this.roleMaster = roleMaster;
-	}
 	public String getGender() {
 		return gender;
 	}
@@ -160,8 +184,6 @@ public class EmployeeMaster {
 		this.birthdate = birthdate;
 	}
 
-	public EmployeeMaster() {
-		super();
-	}
+	
 		
 }
