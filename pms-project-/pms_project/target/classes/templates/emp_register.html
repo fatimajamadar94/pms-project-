@@ -2,26 +2,49 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>User Registration Form</title>
+<style type="text/css">
+label {
+	display: inline-block;
+	width: 200px;
+	margin: 5px;
+	text-align: left;
+}
+
+input[type=text], input[type=email], input[type=password], select {
+	display: inline-block;
+	width: 200px;
+}
+
+input[type=radio] {
+	margin-left: 45px;
+}
+
+input[type=checkbox] {
+	margin-right: 190px;
+}
+
+button {
+	padding: 5px;
+	margin: 10px;
+}
+</style>
+
 </head>
-<body>  
- <form action="saveEmpReg" method="post">
- <table align="center">
-   <tr>
-    <td>First Name</td>
-    <td><input type="text" name="ename"/></td>
-   </tr>
-   <tr>
-    <td>email id </td>
-    <td><input type="text" name="emailId"/></td>
-   </tr>
-     <tr>
-   <tr>
-    <td>Phone no </td>
-    <td><input type="text" name="phone"/></td>
-   </tr>
-   <tr><td colspan="2" ><input type="submit" value="Register"/></td></tr>
- </table>
- </form>
+<body>
+<div align="center">
+    <div style="border-style:solid; width:500px">
+        <h1>User Registration</h1>
+	<form action="saveEmpReg" method="post">
+		<label>Full name:</label> <input type="text" name="ename" /> <label>Email
+			ID:</label> <input type="text" name="emailId" /> <label>Phone no:</label> <input
+			type="text" name="phone" />
+
+		<button type="submit">Register</button>
+
+	</form>
+	    </div>
+</div>
+	
 </body>
 </html>

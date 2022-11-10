@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.convert.ReadingConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,17 +14,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yash.pms.model.ProjectDetails;
 import com.yash.pms.pmsdao.ProjectDetailsRepository;
 
 @Controller
+@RequestMapping("/addproject")
 public class ProjectDetailsController {
 	
 	@Autowired
 	private ProjectDetailsRepository proDetailsRepo;
 
-	@GetMapping("/")
+	@GetMapping("/projectdetail")
 	public String project(Model m) {
 		
 		List<ProjectDetails> list=proDetailsRepo.findAll();
@@ -61,7 +64,7 @@ public class ProjectDetailsController {
 		session.setAttribute("msg", "Project Add Successfully...");
 		
 		
-		return "redirect:/add";
+		return "index1";
 	}
 	
 	
@@ -74,7 +77,7 @@ public class ProjectDetailsController {
 		session.setAttribute("msg", "Project updated Successfully...");
 		
 		
-		return "redirect:/";
+		return "redirect:/index1";
 	}
 	
 	
