@@ -1,8 +1,12 @@
 package com.yash.pms.controller;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +29,8 @@ public class ProjectDetailsController {
 	private ProjectDetailsService projectDetailsService;
 	
 	
+
+	
 	@GetMapping("/getproject")
 	public List<ProjectDetails> getAllProjectDetails(){
 		
@@ -44,10 +50,20 @@ public class ProjectDetailsController {
 		projectDetailsService.updateProject(projectId, projectDetails);
 	}
 
+	@GetMapping("/getprojectbyid/{projectId}")
+	public Optional<ProjectDetails> getProjectById(@PathVariable("projectId") int projectId ) {
+		 
+		return  this.projectDetailsService.getProjectById(projectId);
+	}
 	
 	
+	@DeleteMapping("/delete/{projectId}")
+	public String deleteProjectById(@PathVariable("projectId") int projectId   ) {
 	
-	
+		projectDetailsService.delete(projectId);
+		
+		return "ok";
+	}
 
 //	@GetMapping("/")
 //	public String project(Model m) {

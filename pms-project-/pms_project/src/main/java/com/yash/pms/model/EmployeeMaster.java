@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -20,12 +22,17 @@ public class EmployeeMaster {
 	private int empOfficialId;
 	private String eName;
 	private String emailId;
+	private String jobType;
 	private String empId;
 	private Integer phone;
 	private String gender;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birthdate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date joiningDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedDate;
 	private String userName;
 	private String password;
@@ -48,26 +55,16 @@ public class EmployeeMaster {
 	
 	
 	
-	public int getEmpOfficialId() {
-		return empOfficialId;
-	}
-	public void setEmpOfficialId(int empOfficialId) {
-		this.empOfficialId = empOfficialId;
-	}
-	public String geteName() {
-		return eName;
-	}
-	public void seteName(String ename) {
-		this.eName = ename;
-	}
-	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, Integer phone, String gender,
-			Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
-			String empProjectStatus, DepartmentMaster deptdepMaster, DesignationMaster designationMaster,
-			RoleMaster roleMaster) {
+	
+	public EmployeeMaster(int empOfficialId, String eName, String emailId, String jobType, String empId, Integer phone,
+			String gender, Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName,
+			String password, String empProjectStatus, DepartmentMaster deptdepMaster,
+			DesignationMaster designationMaster, RoleMaster roleMaster) {
 		super();
 		this.empOfficialId = empOfficialId;
 		this.eName = eName;
 		this.emailId = emailId;
+		this.jobType = jobType;
 		this.empId = empId;
 		this.phone = phone;
 		this.gender = gender;
@@ -82,7 +79,30 @@ public class EmployeeMaster {
 		this.designationMaster = designationMaster;
 		this.roleMaster = roleMaster;
 	}
-
+	
+	
+	
+	
+	
+	public String getJobType() {
+		return jobType;
+	}
+	public void setJobType(String jobType) {
+		this.jobType = jobType;
+	}
+	
+	public int getEmpOfficialId() {
+		return empOfficialId;
+	}
+	public void setEmpOfficialId(int empOfficialId) {
+		this.empOfficialId = empOfficialId;
+	}
+	public String geteName() {
+		return eName;
+	}
+	public void seteName(String ename) {
+		this.eName = ename;
+	}
 
 
 	public EmployeeMaster() {
@@ -182,6 +202,15 @@ public class EmployeeMaster {
 	}
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
+	}
+	@Override
+	public String toString() {
+		return "EmployeeMaster [empOfficialId=" + empOfficialId + ", eName=" + eName + ", emailId=" + emailId
+				+ ", jobType=" + jobType + ", empId=" + empId + ", phone=" + phone + ", gender=" + gender
+				+ ", birthdate=" + birthdate + ", joiningDate=" + joiningDate + ", createdDate=" + createdDate
+				+ ", updatedDate=" + updatedDate + ", userName=" + userName + ", password=" + password
+				+ ", empProjectStatus=" + empProjectStatus + ", deptdepMaster=" + deptdepMaster + ", designationMaster="
+				+ designationMaster + ", roleMaster=" + roleMaster + "]";
 	}
 
 	

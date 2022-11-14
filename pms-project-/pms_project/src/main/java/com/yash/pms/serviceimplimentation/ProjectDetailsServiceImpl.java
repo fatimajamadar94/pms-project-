@@ -55,5 +55,14 @@ public class ProjectDetailsServiceImpl implements ProjectDetailsService {
 		}
 	}
 
-	
+	@Override
+	public Optional<ProjectDetails> getProjectById(int projectId) {
+
+		return projectDetailsDao.findById(projectId); 
+	}
+
+	@Override
+	public void delete(int projectId) {
+		projectDetailsDao.deleteById(projectId);
+	}
 }
