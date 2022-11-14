@@ -1,12 +1,14 @@
 package com.yash.pms.serviceimplimentation;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
 import com.yash.pms.dao.RegisterDao;
+import com.yash.pms.model.DesignationMaster;
 import com.yash.pms.model.EmployeeMaster;
 import com.yash.pms.service.RegisterService;
 
@@ -31,7 +33,18 @@ RegisterDao registerDao;
 	}
 	@Override
 	public EmployeeMaster addEmployee(EmployeeMaster employeeMaster) {
-		EmployeeMaster emp=registerDao.save(employeeMaster);
+		EmployeeMaster employee=new EmployeeMaster();
+		employee.setEmpOfficialId(employeeMaster.getEmpOfficialId());
+		employee.setEmailId(employeeMaster.getEmailId());
+		employee.seteName(employeeMaster.geteName());
+		employee.setUserName(employeeMaster.getEmailId());
+		employee.setPassword("1234");
+		employee.setEmpId(employeeMaster.getEmailId());
+		employee.setBirthdate(employeeMaster.getBirthdate());
+		employee.setGender(employeeMaster.getGender());
+//		DesignationMaster designationMaster=new DesignationMaster();
+//		designationMaster.setDesignId(employeeMaster.getDeptdepMaster().getDeptId());
+		EmployeeMaster emp=registerDao.save(employee);
 		return emp;
 	}
 	public EmployeeMaster findByEmailAndPassword(String username, String password) {
@@ -43,6 +56,10 @@ RegisterDao registerDao;
 	public List<EmployeeMaster> getAllEmployee() {
 List<EmployeeMaster> list=registerDao.registerList();
 return list;
+	}
+		@Override
+	public void delete(EmployeeMaster employee) {
+registerDao.delete(employee);		
 	}
 
 }

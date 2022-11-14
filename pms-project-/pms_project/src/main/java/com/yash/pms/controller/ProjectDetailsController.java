@@ -39,9 +39,9 @@ public class ProjectDetailsController {
 	
 	
 	@PostMapping("/addproject")
-	public void addProjectDetails(@RequestBody ProjectDetails projectDetails) {
-		
-			projectDetailsService.addProject(projectDetails);
+	public ProjectDetails addProjectDetails(@RequestBody ProjectDetails projectDetails) {
+			ProjectDetails projectDetails2=projectDetailsService.addProject(projectDetails);
+			return projectDetails;
 		 
 	}
 	
@@ -56,6 +56,7 @@ public class ProjectDetailsController {
 		return  this.projectDetailsService.getProjectById(projectId);
 	}
 	
+<<<<<<< HEAD
 	
 	@DeleteMapping("/delete/{projectId}")
 	public String deleteProjectById(@PathVariable("projectId") int projectId   ) {
@@ -121,4 +122,7 @@ public class ProjectDetailsController {
 //	
 //	
 	
+=======
+		
+>>>>>>> 1f67f52fcab65692df5c40734574c1150541e270
 }

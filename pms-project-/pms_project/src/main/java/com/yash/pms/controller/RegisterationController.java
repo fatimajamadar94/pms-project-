@@ -3,18 +3,25 @@ package com.yash.pms.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.yash.pms.Exception.ResourceNotFoundException;
+import com.yash.pms.dao.RegisterDao;
 import com.yash.pms.model.EmployeeMaster;
 import com.yash.pms.service.RegisterService;
 
@@ -25,15 +32,8 @@ public class RegisterationController {
 	@Autowired
 	RegisterService registerService;
 
-	@RequestMapping("/index")
-	public String index() {
-		return "index";
-	}
-
-	@RequestMapping("/register")
-	public String empRegisteration() {
-		return "emp_register";
-	}
+	@Autowired
+	RegisterDao registerDao;
 
 	@PostMapping("/registration")
 	public EmployeeMaster addCustomer(@RequestBody EmployeeMaster employeeMaster) throws Exception {
@@ -45,7 +45,7 @@ public class RegisterationController {
 			if (empObj != null) {
 				return empObj;
 			} else {
-				emp1 = registerService.addEmployee(employeeMaster);
+				emp1 = registerDao.save(employeeMaster);
 				System.out.println("1" + emp1);
 				return emp1;
 
@@ -84,5 +84,34 @@ public class RegisterationController {
 		return registerService.getAllEmployee();
 	
 	
+	}
+	@GetMapping("/employees/{id}")
+	public ResponseEntity<Optional<EmployeeMaster>> getEmployeeById(@PathVariable(value = "id") Integer employeeId)
+			throws ResourceNotFoundException {
+		Optional<EmployeeMaster> employee = registerDao.findById(employeeId);
+		return ResponseEntity.ok().body(employee);
+	}
+
+	
+
+	@PutMapping("/employees/{id}")
+	public ResponseEntity<EmployeeMaster> updateEmployee(@PathVariable(value = "id") Integer employeeId,
+			@RequestBody EmployeeMaster employeeDetails) throws ResourceNotFoundException {
+		Optional<EmployeeMaster> employee1 = registerDao.findById(employeeId);
+        EmployeeMaster employee=employee1.get();
+		
+		final EmployeeMaster updatedEmployee = registerService.addEmployee(employee);
+		return ResponseEntity.ok(updatedEmployee);
+	}
+
+	@DeleteMapping("/employees/{id}")
+	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Integer employeeId)
+			throws ResourceNotFoundException {
+		Optional<EmployeeMaster> employee1 = registerDao.findById(employeeId);
+        EmployeeMaster employee=employee1.get();
+		registerService.delete(employee);
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		return response;
 	}
 }

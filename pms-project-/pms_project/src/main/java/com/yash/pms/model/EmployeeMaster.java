@@ -24,7 +24,7 @@ public class EmployeeMaster {
 	private String emailId;
 	private String jobType;
 	private String empId;
-	private Integer phone;
+	private String phone;
 	private String gender;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birthdate;
@@ -37,6 +37,13 @@ public class EmployeeMaster {
 	private String userName;
 	private String password;
 	private String empProjectStatus;
+	private String jobType;
+	public String getJobType() {
+		return jobType;
+	}
+	public void setJobType(String jobType) {
+		this.jobType = jobType;
+	}
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
 	@JoinColumn(name="deptId")
 	@JsonIgnore
@@ -55,11 +62,33 @@ public class EmployeeMaster {
 	
 	
 	
+<<<<<<< HEAD
 	
 	public EmployeeMaster(int empOfficialId, String eName, String emailId, String jobType, String empId, Integer phone,
 			String gender, Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName,
 			String password, String empProjectStatus, DepartmentMaster deptdepMaster,
 			DesignationMaster designationMaster, RoleMaster roleMaster) {
+=======
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public int getEmpOfficialId() {
+		return empOfficialId;
+	}
+	public void setEmpOfficialId(int empOfficialId) {
+		this.empOfficialId = empOfficialId;
+	}
+	public String geteName() {
+		return eName;
+	}
+	public void seteName(String ename) {
+		this.eName = ename;
+	}
+	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, String phone, String gender,
+			Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
+			String empProjectStatus, DepartmentMaster deptdepMaster, DesignationMaster designationMaster,
+			RoleMaster roleMaster) {
+>>>>>>> 1f67f52fcab65692df5c40734574c1150541e270
 		super();
 		this.empOfficialId = empOfficialId;
 		this.eName = eName;
@@ -109,17 +138,6 @@ public class EmployeeMaster {
 		super();
 	}
 
-
-
-	public Integer getPhone() {
-		return phone;
-	}
-
-
-
-	public void setPhone(Integer phone) {
-		this.phone = phone;
-	}
 
 
 

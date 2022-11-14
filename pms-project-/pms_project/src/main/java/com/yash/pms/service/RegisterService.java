@@ -19,5 +19,8 @@ public interface RegisterService {
 
 	List<EmployeeMaster> getAllEmployee();
 
+	void delete(EmployeeMaster employee);
+
+
 
 }

@@ -9,7 +9,7 @@ public interface ProjectDetailsService {
 
 	public List<ProjectDetails> getAllProject();
 
-	public void addProject(ProjectDetails projectDetails);
+	public ProjectDetails addProject(ProjectDetails projectDetails);
 	
 	public void updateProject(int projectId, ProjectDetails  projectDetails);
 	

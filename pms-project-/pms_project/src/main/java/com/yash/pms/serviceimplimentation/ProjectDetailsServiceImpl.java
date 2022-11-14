@@ -25,11 +25,11 @@ public class ProjectDetailsServiceImpl implements ProjectDetailsService {
 	}
 
 	@Override
-	public void addProject(ProjectDetails projectDetails) {
+	public ProjectDetails addProject(ProjectDetails projectDetails) {
 		
 		// TODO Auto-generated method stub
 		
-		projectDetailsDao.save(projectDetails);
+		return projectDetailsDao.save(projectDetails);
 		
 	}
 
