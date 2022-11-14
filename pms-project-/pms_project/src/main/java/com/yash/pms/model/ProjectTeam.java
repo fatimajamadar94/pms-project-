@@ -16,8 +16,7 @@ public class ProjectTeam {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private ProjectDetails projectDetails;
 	@ManyToOne(fetch=FetchType.LAZY)
-	private EmployeeMaster employeeMaster;
-	
+    private EmployeeMaster employeeMaster;	
 	
 	ProjectTeam(){
 		
