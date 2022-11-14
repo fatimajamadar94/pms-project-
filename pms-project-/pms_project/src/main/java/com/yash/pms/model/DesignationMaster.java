@@ -21,14 +21,6 @@ public class DesignationMaster {
 	}
 
 
-public DesignationMaster(int designId, String designName, String designDescp) {
-	super();
-	this.designId = designId;
-	this.designName = designName;
-	this.designDescp = designDescp;
-}
-
-
 public int getDesignId() {
 	return designId;
 }
@@ -58,13 +50,6 @@ public void setDesignDescp(String designDescp) {
 	this.designDescp = designDescp;
 }
 
-
-@Override
-public String toString() {
-	return "DesignationMaster [designId=" + designId + ", designName=" + designName + ", designDescp=" + designDescp
-			+ "]";
-}
-	
  
  
 }

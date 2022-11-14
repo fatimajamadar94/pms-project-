@@ -21,7 +21,7 @@ public class EmployeeMaster {
 	private String eName;
 	private String emailId;
 	private String empId;
-	private Integer phone;
+	private String phone;
 	private String gender;
 	private Date birthdate;
 	private Date joiningDate;
@@ -30,6 +30,13 @@ public class EmployeeMaster {
 	private String userName;
 	private String password;
 	private String empProjectStatus;
+	private String jobType;
+	public String getJobType() {
+		return jobType;
+	}
+	public void setJobType(String jobType) {
+		this.jobType = jobType;
+	}
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
 	@JoinColumn(name="deptId")
 	@JsonIgnore
@@ -48,6 +55,9 @@ public class EmployeeMaster {
 	
 	
 	
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	public int getEmpOfficialId() {
 		return empOfficialId;
 	}
@@ -60,7 +70,7 @@ public class EmployeeMaster {
 	public void seteName(String ename) {
 		this.eName = ename;
 	}
-	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, Integer phone, String gender,
+	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, String phone, String gender,
 			Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
 			String empProjectStatus, DepartmentMaster deptdepMaster, DesignationMaster designationMaster,
 			RoleMaster roleMaster) {
@@ -89,17 +99,6 @@ public class EmployeeMaster {
 		super();
 	}
 
-
-
-	public Integer getPhone() {
-		return phone;
-	}
-
-
-
-	public void setPhone(Integer phone) {
-		this.phone = phone;
-	}
 
 
 

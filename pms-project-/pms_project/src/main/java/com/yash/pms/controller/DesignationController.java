@@ -3,6 +3,7 @@ package com.yash.pms.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import com.yash.pms.service.DesignationService;
 
 @RestController
 @RequestMapping("/designation")
+@CrossOrigin("*")
 public class DesignationController {
 
 	@Autowired
@@ -28,7 +30,7 @@ public class DesignationController {
 	public void addDesignation(@RequestBody DesignationMaster designationMaster) {
 		designationService.saveDesignation(designationMaster);
 	}
-	@GetMapping("/get")
+	@GetMapping("/getdesignationList")
 	public List<DesignationMaster> getDesignation() {
 		return designationService.getDesignation();
 	}
