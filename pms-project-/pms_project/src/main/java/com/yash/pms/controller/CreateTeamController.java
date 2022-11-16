@@ -19,7 +19,6 @@ import com.yash.pms.service.CreateTeamService;
 import com.yash.pms.service.ProjectDetailsService;
 
 @RestController
-@RequestMapping("/createTeam")
 @CrossOrigin("*")
 public class CreateTeamController {
 	@Autowired
@@ -35,8 +34,9 @@ public class CreateTeamController {
 	
 	
 	@PostMapping("/createteam")
-	public String addTeam(@RequestBody TeamReqDto ProjectTeam) {
-		String team=createTeamService.addTeam(ProjectTeam);
+	public String addTeam(@RequestBody ProjectTeam projeTeam) {
+		String team=createTeamService.addTeam(projeTeam);
+		System.out.println(team);
 			return team;
 		 
 	}

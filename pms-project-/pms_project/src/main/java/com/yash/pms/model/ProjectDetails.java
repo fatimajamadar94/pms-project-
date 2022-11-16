@@ -2,11 +2,15 @@ package com.yash.pms.model;
 
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 @Entity
@@ -25,9 +29,15 @@ public class ProjectDetails {
 	private Date endDate;
 	private Date createdOn;
 	private int teamSize;
-	
-	
-	
+	  @OneToMany(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+		private List<ProjectTeam> list;
+			
+	public List<ProjectTeam> getList() {
+		return list;
+	}
+	public void setList(List<ProjectTeam> list) {
+		this.list = list;
+	}
 	public int getProjectId() {
 		return projectId;
 	}
@@ -88,8 +98,9 @@ public class ProjectDetails {
 	}
 	
 	
+
 	public ProjectDetails(int projectId, String projectName, String projectDescription, String technology,
-			String erDiagram, Date startDate, Date endDate, Date createdOn, int teamSize) {
+			String erDiagram, Date startDate, Date endDate, Date createdOn, int teamSize, List<ProjectTeam> list) {
 		super();
 		this.projectId = projectId;
 		this.projectName = projectName;
@@ -100,6 +111,7 @@ public class ProjectDetails {
 		this.endDate = endDate;
 		this.createdOn = createdOn;
 		this.teamSize = teamSize;
+		this.list = list;
 	}
 	@Override
 	public String toString() {

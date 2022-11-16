@@ -1,6 +1,7 @@
 package com.yash.pms.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -31,6 +33,16 @@ public class EmployeeMaster {
 	private String password;
 	private String empProjectStatus;
 	private String jobType;
+	private String empStatus;
+	public String getEmpStatus() {
+		return empStatus;
+	}
+	public void setEmpStatus(String empStatus) {
+		this.empStatus = empStatus;
+	}
+	public String getPhone() {
+		return phone;
+	}
 	public String getJobType() {
 		return jobType;
 	}
@@ -49,12 +61,19 @@ public class EmployeeMaster {
 	@JoinColumn(name="roleId")
 	@JsonIgnore
 	private RoleMaster roleMaster;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+	private List<ProjectTeam> list;
 	
 	
 	
 	
-	
-	
+	public List<ProjectTeam> getList() {
+		return list;
+	}
+	public void setList(List<ProjectTeam> list) {
+		this.list = list;
+	}
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
@@ -70,10 +89,19 @@ public class EmployeeMaster {
 	public void seteName(String ename) {
 		this.eName = ename;
 	}
+	
+
+	public EmployeeMaster() {
+		super();
+	}
+
+
+
+
 	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, String phone, String gender,
 			Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
-			String empProjectStatus, DepartmentMaster deptdepMaster, DesignationMaster designationMaster,
-			RoleMaster roleMaster) {
+			String empProjectStatus, String jobType, String empStatus, DepartmentMaster deptdepMaster,
+			DesignationMaster designationMaster, RoleMaster roleMaster, List<ProjectTeam> list) {
 		super();
 		this.empOfficialId = empOfficialId;
 		this.eName = eName;
@@ -88,20 +116,13 @@ public class EmployeeMaster {
 		this.userName = userName;
 		this.password = password;
 		this.empProjectStatus = empProjectStatus;
+		this.jobType = jobType;
+		this.empStatus = empStatus;
 		this.deptdepMaster = deptdepMaster;
 		this.designationMaster = designationMaster;
 		this.roleMaster = roleMaster;
+		this.list = list;
 	}
-
-
-
-	public EmployeeMaster() {
-		super();
-	}
-
-
-
-
 	public String getEmailId() {
 		return emailId;
 	}

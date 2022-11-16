@@ -25,6 +25,8 @@ public interface RegisterDao extends JpaRepository<EmployeeMaster, Integer> {
 public List<EmployeeMaster> registerList();
 //@Query(value ="select * from employee_master where emp_official_id=?1",nativeQuery=true)
 //public EmployeeMaster  findById(Int);
+@Query(value="select * from employee_master where emp_status='Active' and emp_project_status='on pool'",nativeQuery=true)
+public List<EmployeeMaster> emplList();
 
 
 

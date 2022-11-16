@@ -9,24 +9,23 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@JsonIgnoreProperties("inspection")
 public class ProjectTeam {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer teamId;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JsonBackReference
-	@JsonIgnoreProperties("comment")
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private ProjectDetails projectDetails;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JsonBackReference
-	@JsonIgnoreProperties("comment")
-
-    private EmployeeMaster employeeMaster;	
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"}) 
+	private EmployeeMaster employeeMaster;	
 	
 	public ProjectTeam(){
 		
