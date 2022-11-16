@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -22,12 +24,17 @@ public class EmployeeMaster {
 	private int empOfficialId;
 	private String eName;
 	private String emailId;
+	private String jobType;
 	private String empId;
 	private String phone;
 	private String gender;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birthdate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date joiningDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedDate;
 	private String userName;
 	private String password;
@@ -68,12 +75,24 @@ public class EmployeeMaster {
 	
 	
 	
+<<<<<<< HEAD
 	public List<ProjectTeam> getList() {
 		return list;
 	}
 	public void setList(List<ProjectTeam> list) {
 		this.list = list;
 	}
+=======
+	
+	
+<<<<<<< HEAD
+	
+	public EmployeeMaster(int empOfficialId, String eName, String emailId, String jobType, String empId, Integer phone,
+			String gender, Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName,
+			String password, String empProjectStatus, DepartmentMaster deptdepMaster,
+			DesignationMaster designationMaster, RoleMaster roleMaster) {
+=======
+>>>>>>> db765bc9ca0b1d23611619bb76f105cbe5a90987
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
@@ -100,12 +119,19 @@ public class EmployeeMaster {
 
 	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, String phone, String gender,
 			Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
+<<<<<<< HEAD
 			String empProjectStatus, String jobType, String empStatus, DepartmentMaster deptdepMaster,
 			DesignationMaster designationMaster, RoleMaster roleMaster, List<ProjectTeam> list) {
+=======
+			String empProjectStatus, DepartmentMaster deptdepMaster, DesignationMaster designationMaster,
+			RoleMaster roleMaster) {
+>>>>>>> 1f67f52fcab65692df5c40734574c1150541e270
+>>>>>>> db765bc9ca0b1d23611619bb76f105cbe5a90987
 		super();
 		this.empOfficialId = empOfficialId;
 		this.eName = eName;
 		this.emailId = emailId;
+		this.jobType = jobType;
 		this.empId = empId;
 		this.phone = phone;
 		this.gender = gender;
@@ -123,6 +149,42 @@ public class EmployeeMaster {
 		this.roleMaster = roleMaster;
 		this.list = list;
 	}
+<<<<<<< HEAD
+=======
+	
+	
+	
+	
+	
+	public String getJobType() {
+		return jobType;
+	}
+	public void setJobType(String jobType) {
+		this.jobType = jobType;
+	}
+	
+	public int getEmpOfficialId() {
+		return empOfficialId;
+	}
+	public void setEmpOfficialId(int empOfficialId) {
+		this.empOfficialId = empOfficialId;
+	}
+	public String geteName() {
+		return eName;
+	}
+	public void seteName(String ename) {
+		this.eName = ename;
+	}
+
+
+	public EmployeeMaster() {
+		super();
+	}
+
+
+
+
+>>>>>>> db765bc9ca0b1d23611619bb76f105cbe5a90987
 	public String getEmailId() {
 		return emailId;
 	}
@@ -202,6 +264,15 @@ public class EmployeeMaster {
 	}
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
+	}
+	@Override
+	public String toString() {
+		return "EmployeeMaster [empOfficialId=" + empOfficialId + ", eName=" + eName + ", emailId=" + emailId
+				+ ", jobType=" + jobType + ", empId=" + empId + ", phone=" + phone + ", gender=" + gender
+				+ ", birthdate=" + birthdate + ", joiningDate=" + joiningDate + ", createdDate=" + createdDate
+				+ ", updatedDate=" + updatedDate + ", userName=" + userName + ", password=" + password
+				+ ", empProjectStatus=" + empProjectStatus + ", deptdepMaster=" + deptdepMaster + ", designationMaster="
+				+ designationMaster + ", roleMaster=" + roleMaster + "]";
 	}
 
 	
