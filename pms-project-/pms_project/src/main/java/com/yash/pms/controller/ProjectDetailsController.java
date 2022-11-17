@@ -52,7 +52,8 @@ public class ProjectDetailsController {
 		 
 		return  this.projectDetailsService.getProjectById(projectId);
 	}
-		
+	
+	
 	@DeleteMapping("/delete/{projectId}")
 	public String deleteProjectById(@PathVariable("projectId") int projectId   ) {
 	

@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Attendance {
 
@@ -21,6 +23,7 @@ public class Attendance {
 	private int workDuration;
 	private Date createdOn;
 	private String attenStatus;
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	private EmployeeMaster employeeMaster;
 	

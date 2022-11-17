@@ -1,5 +1,7 @@
 package com.yash.pms.serviceimplimentation;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +30,9 @@ public class ProjectStatusServiceImpl implements ProjectStatusService{
 		
 	}
 
+
+	public List<ProjectStatus> getProjectStatus() {
+		// TODO Auto-generated method stub
+		return projectStatusDao.findAll();
+	}
 }
