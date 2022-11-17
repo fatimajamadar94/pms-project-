@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yash.pms.model.DepartmentMaster;
-import com.yash.pms.model.DesignationMaster;
 import com.yash.pms.service.DepartmentService;
 
 @RestController

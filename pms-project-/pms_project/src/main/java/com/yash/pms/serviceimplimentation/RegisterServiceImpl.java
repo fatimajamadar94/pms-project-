@@ -33,20 +33,20 @@ RegisterDao registerDao;
 	}
 	@Override
 	public EmployeeMaster addEmployee(EmployeeMaster employeeMaster) {
-		EmployeeMaster employee=new EmployeeMaster();
-		employee.setEmpOfficialId(employeeMaster.getEmpOfficialId());
-		employee.setEmailId(employeeMaster.getEmailId());
-		employee.seteName(employeeMaster.geteName());
-		employee.setUserName(employeeMaster.getEmailId());
-		employee.setPassword("1234");
-		employee.setEmpId(employeeMaster.getEmailId());
-		employee.setBirthdate(employeeMaster.getBirthdate());
-		employee.setGender(employeeMaster.getGender());
-		employee.setEmpStatus("Active");
-		employee.setEmpProjectStatus("on pool");
-//		DesignationMaster designationMaster=new DesignationMaster();
-//		designationMaster.setDesignId(employeeMaster.getDeptdepMaster().getDeptId());
-		EmployeeMaster emp=registerDao.save(employee);
+//		EmployeeMaster employee=new EmployeeMaster();
+//		employee.setEmpOfficialId(employeeMaster.getEmpOfficialId());
+//		employee.setEmailId(employeeMaster.getEmailId());
+//		employee.seteName(employeeMaster.geteName());
+//		employee.setUserName(employeeMaster.getEmailId());
+//		employee.setPassword("1234");
+//		employee.setEmpId(employeeMaster.getEmailId());
+//		employee.setBirthdate(employeeMaster.getBirthdate());
+//		employee.setGender(employeeMaster.getGender());
+//		employee.setEmpStatus("Active");
+//		employee.setEmpProjectStatus("on pool");
+//		employee.setDesignationMaster(employeeMaster.getDesignationMaster());
+		employeeMaster.setEmpProjectStatus("new");
+		EmployeeMaster emp=registerDao.save(employeeMaster);
 		return emp;
 	}
 	public EmployeeMaster findByEmailAndPassword(String username, String password) {

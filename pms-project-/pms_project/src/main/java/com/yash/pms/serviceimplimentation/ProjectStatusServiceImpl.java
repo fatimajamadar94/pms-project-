@@ -22,4 +22,10 @@ public class ProjectStatusServiceImpl implements ProjectStatusService{
 		
 	}
 
+	@Override
+	public void getStatus() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

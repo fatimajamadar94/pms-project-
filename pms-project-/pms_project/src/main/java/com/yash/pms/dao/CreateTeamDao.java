@@ -7,7 +7,7 @@ import com.yash.pms.model.ProjectTeam;
 
 public interface CreateTeamDao extends CrudRepository<ProjectTeam, Integer>  {
 
-	@Query(value = "select * from project_team where emp_official_id=?1 and project_id=?2",nativeQuery=true)
+	@Query(value = "select * from project_team where employee_master_emp_official_id=?1 and project_details_project_id=?2 ",nativeQuery=true)
 	ProjectTeam isExist(Integer empOfficialId, Integer projecId);
 
 }

@@ -16,8 +16,10 @@ import javax.persistence.OneToMany;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@JsonIgnoreProperties("inspection")
 public class EmployeeMaster {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,9 +41,33 @@ public class EmployeeMaster {
 	private String userName;
 	private String password;
 	private String empProjectStatus;
-	private String jobType;
 	private String empStatus;
-	public String getEmpStatus() {
+	
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+	@JoinColumn(name="deptId")
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"}) 
+	private DepartmentMaster deptdepMaster;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"}) 
+	private DesignationMaster designationMaster;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="roleId")
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"}) 
+	private RoleMaster roleMaster;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+	private List<ProjectTeam> list;
+    
+    public int getEmpOfficialId() {
+		return empOfficialId;
+	}
+	public void setEmpOfficialId(int empOfficialId) {
+		this.empOfficialId = empOfficialId;
+	}
+	
+    public String getEmpStatus() {
 		return empStatus;
 	}
 	public void setEmpStatus(String empStatus) {
@@ -50,58 +76,21 @@ public class EmployeeMaster {
 	public String getPhone() {
 		return phone;
 	}
-	public String getJobType() {
-		return jobType;
-	}
-	public void setJobType(String jobType) {
-		this.jobType = jobType;
-	}
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-	@JoinColumn(name="deptId")
-	@JsonIgnore
-	private DepartmentMaster deptdepMaster;
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-	@JoinColumn(name="designId")
-	@JsonIgnore
-	private DesignationMaster designationMaster;
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-	@JoinColumn(name="roleId")
-	@JsonIgnore
-	private RoleMaster roleMaster;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
-	private List<ProjectTeam> list;
 	
 	
-	
-	
-<<<<<<< HEAD
 	public List<ProjectTeam> getList() {
 		return list;
 	}
 	public void setList(List<ProjectTeam> list) {
 		this.list = list;
 	}
-=======
+
 	
 	
-<<<<<<< HEAD
-	
-	public EmployeeMaster(int empOfficialId, String eName, String emailId, String jobType, String empId, Integer phone,
-			String gender, Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName,
-			String password, String empProjectStatus, DepartmentMaster deptdepMaster,
-			DesignationMaster designationMaster, RoleMaster roleMaster) {
-=======
->>>>>>> db765bc9ca0b1d23611619bb76f105cbe5a90987
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public int getEmpOfficialId() {
-		return empOfficialId;
-	}
-	public void setEmpOfficialId(int empOfficialId) {
-		this.empOfficialId = empOfficialId;
-	}
+	
 	public String geteName() {
 		return eName;
 	}
@@ -117,44 +106,7 @@ public class EmployeeMaster {
 
 
 
-	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, String phone, String gender,
-			Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
-<<<<<<< HEAD
-			String empProjectStatus, String jobType, String empStatus, DepartmentMaster deptdepMaster,
-			DesignationMaster designationMaster, RoleMaster roleMaster, List<ProjectTeam> list) {
-=======
-			String empProjectStatus, DepartmentMaster deptdepMaster, DesignationMaster designationMaster,
-			RoleMaster roleMaster) {
->>>>>>> 1f67f52fcab65692df5c40734574c1150541e270
->>>>>>> db765bc9ca0b1d23611619bb76f105cbe5a90987
-		super();
-		this.empOfficialId = empOfficialId;
-		this.eName = eName;
-		this.emailId = emailId;
-		this.jobType = jobType;
-		this.empId = empId;
-		this.phone = phone;
-		this.gender = gender;
-		this.birthdate = birthdate;
-		this.joiningDate = joiningDate;
-		this.createdDate = createdDate;
-		this.updatedDate = updatedDate;
-		this.userName = userName;
-		this.password = password;
-		this.empProjectStatus = empProjectStatus;
-		this.jobType = jobType;
-		this.empStatus = empStatus;
-		this.deptdepMaster = deptdepMaster;
-		this.designationMaster = designationMaster;
-		this.roleMaster = roleMaster;
-		this.list = list;
-	}
-<<<<<<< HEAD
-=======
-	
-	
-	
-	
+
 	
 	public String getJobType() {
 		return jobType;
@@ -163,28 +115,6 @@ public class EmployeeMaster {
 		this.jobType = jobType;
 	}
 	
-	public int getEmpOfficialId() {
-		return empOfficialId;
-	}
-	public void setEmpOfficialId(int empOfficialId) {
-		this.empOfficialId = empOfficialId;
-	}
-	public String geteName() {
-		return eName;
-	}
-	public void seteName(String ename) {
-		this.eName = ename;
-	}
-
-
-	public EmployeeMaster() {
-		super();
-	}
-
-
-
-
->>>>>>> db765bc9ca0b1d23611619bb76f105cbe5a90987
 	public String getEmailId() {
 		return emailId;
 	}

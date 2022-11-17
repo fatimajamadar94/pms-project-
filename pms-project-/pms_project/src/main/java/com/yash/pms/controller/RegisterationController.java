@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,16 +20,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.yash.pms.Exception.ResourceNotFoundException;
 import com.yash.pms.dao.RegisterDao;
 import com.yash.pms.model.EmployeeMaster;
 import com.yash.pms.service.RegisterService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 //@RequestMapping("/loginAndRegister")
 public class RegisterationController {
+	private static final Logger logger=Logger.getLogger(RegisterationController.class);
 	@Autowired
 	RegisterService registerService;
 
@@ -36,7 +37,8 @@ public class RegisterationController {
 	RegisterDao registerDao;
 
 	@PostMapping("/registration")
-	public EmployeeMaster addCustomer(@RequestBody EmployeeMaster employeeMaster) throws Exception {
+	public EmployeeMaster addEmployee(@RequestBody EmployeeMaster employeeMaster) throws Exception {
+		//logger.info("RegisterationController :: addEmployee function started.");
 		EmployeeMaster emp1 = null;
 		String tempEmail = employeeMaster.getEmailId();
 		if (tempEmail != null && !"".equals(tempEmail)) {
@@ -60,22 +62,22 @@ public class RegisterationController {
 	}
 
 	@GetMapping("/logincheck/{username}/{password}")
-	public HashMap logincheck(@PathVariable String username, @PathVariable String password) {
+	public EmployeeMaster logincheck(@PathVariable String username, @PathVariable String password) {
 		EmployeeMaster emp = registerService.findByEmailAndPassword(username, password);
 		System.out.println(username);
 		System.out.println(password);
-		HashMap hm = new HashMap();
-		if (emp != null) {
-			System.out.println(emp);
-			hm.put("msg", "Login Successfully!");
-			hm.put("Employee", emp);
-		} else {
-			System.out.println("username invalid>>" + username);
-			System.out.println("password invalid>>" + password);
-			System.out.println("invalid");
-			hm.put("msg", "user invalid");
-		}
-		return hm;
+		//HashMap hm = new HashMap();
+//		if (emp != null) {
+//			System.out.println(emp);
+//			hm.put("msg", "Login Successfully!");
+//			hm.put("Employee", emp);
+//		} else {
+//			System.out.println("username invalid>>" + username);
+//			System.out.println("password invalid>>" + password);
+//			System.out.println("invalid");
+//			hm.put("msg", "user invalid");
+//		}
+		return emp;
 	}
 
 	@GetMapping("/getemployee")
@@ -96,11 +98,11 @@ public class RegisterationController {
 
 	@PutMapping("/employees/{id}")
 	public ResponseEntity<EmployeeMaster> updateEmployee(@PathVariable(value = "id") Integer employeeId,
-			@RequestBody EmployeeMaster employeeDetails) throws ResourceNotFoundException {
+			@RequestBody EmployeeMaster empMaster) throws ResourceNotFoundException {
 		Optional<EmployeeMaster> employee1 = registerDao.findById(employeeId);
         EmployeeMaster employee=employee1.get();
 		
-		final EmployeeMaster updatedEmployee = registerService.addEmployee(employee);
+		final EmployeeMaster updatedEmployee = registerService.addEmployee(empMaster);
 		return ResponseEntity.ok(updatedEmployee);
 	}
 
