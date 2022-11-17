@@ -10,4 +10,5 @@ public interface DepartmentService {
 	public void saveDepartment(DepartmentMaster departmentMaster);
 
 	public List<DepartmentMaster> getDepartment();
+	
 }

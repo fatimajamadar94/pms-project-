@@ -22,7 +22,6 @@ public class EmployeeMaster {
 	private int empOfficialId;
 	private String eName;
 	private String emailId;
-	private String jobType;
 	private String empId;
 	private String phone;
 	private String gender;
@@ -38,12 +37,7 @@ public class EmployeeMaster {
 	private String password;
 	private String empProjectStatus;
 	private String jobType;
-	public String getJobType() {
-		return jobType;
-	}
-	public void setJobType(String jobType) {
-		this.jobType = jobType;
-	}
+
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
 	@JoinColumn(name="deptId")
 	@JsonIgnore
@@ -57,43 +51,18 @@ public class EmployeeMaster {
 	@JsonIgnore
 	private RoleMaster roleMaster;
 	
-	
-	
-	
-	
-	
-<<<<<<< HEAD
-	
-	public EmployeeMaster(int empOfficialId, String eName, String emailId, String jobType, String empId, Integer phone,
-			String gender, Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName,
-			String password, String empProjectStatus, DepartmentMaster deptdepMaster,
-			DesignationMaster designationMaster, RoleMaster roleMaster) {
-=======
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public EmployeeMaster(){
+		
 	}
-	public int getEmpOfficialId() {
-		return empOfficialId;
-	}
-	public void setEmpOfficialId(int empOfficialId) {
-		this.empOfficialId = empOfficialId;
-	}
-	public String geteName() {
-		return eName;
-	}
-	public void seteName(String ename) {
-		this.eName = ename;
-	}
+
 	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, String phone, String gender,
 			Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
-			String empProjectStatus, DepartmentMaster deptdepMaster, DesignationMaster designationMaster,
-			RoleMaster roleMaster) {
->>>>>>> 1f67f52fcab65692df5c40734574c1150541e270
+			String empProjectStatus, String jobType, DepartmentMaster deptdepMaster,
+			DesignationMaster designationMaster, RoleMaster roleMaster) {
 		super();
 		this.empOfficialId = empOfficialId;
 		this.eName = eName;
 		this.emailId = emailId;
-		this.jobType = jobType;
 		this.empId = empId;
 		this.phone = phone;
 		this.gender = gender;
@@ -104,133 +73,165 @@ public class EmployeeMaster {
 		this.userName = userName;
 		this.password = password;
 		this.empProjectStatus = empProjectStatus;
+		this.jobType = jobType;
 		this.deptdepMaster = deptdepMaster;
 		this.designationMaster = designationMaster;
 		this.roleMaster = roleMaster;
 	}
-	
-	
-	
-	
-	
-	public String getJobType() {
-		return jobType;
-	}
-	public void setJobType(String jobType) {
-		this.jobType = jobType;
-	}
-	
+
 	public int getEmpOfficialId() {
 		return empOfficialId;
 	}
+
 	public void setEmpOfficialId(int empOfficialId) {
 		this.empOfficialId = empOfficialId;
 	}
+
 	public String geteName() {
 		return eName;
 	}
-	public void seteName(String ename) {
-		this.eName = ename;
+
+	public void seteName(String eName) {
+		this.eName = eName;
 	}
-
-
-	public EmployeeMaster() {
-		super();
-	}
-
-
-
 
 	public String getEmailId() {
 		return emailId;
 	}
+
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+
 	public String getEmpId() {
 		return empId;
 	}
+
 	public void setEmpId(String empId) {
 		this.empId = empId;
 	}
-	
-	public Date getJoiningDate() {
-		return joiningDate;
+
+	public String getPhone() {
+		return phone;
 	}
-	public void setJoiningDate(Date joiningDate) {
-		this.joiningDate = joiningDate;
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-	public Date getUpdatedDate() {
-		return updatedDate;
-	}
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getEmpProjectStatus() {
-		return empProjectStatus;
-	}
-	public void setEmpProjectStatus(String empProjectStatus) {
-		this.empProjectStatus = empProjectStatus;
-	}
-	public DepartmentMaster getDeptdepMaster() {
-		return deptdepMaster;
-	}
-	public void setDeptdepMaster(DepartmentMaster deptdepMaster) {
-		this.deptdepMaster = deptdepMaster;
-	}
-	public DesignationMaster getDesignationMaster() {
-		return designationMaster;
-	}
-	public void setDesignationMaster(DesignationMaster designationMaster) {
-		this.designationMaster = designationMaster;
-	}
-	public RoleMaster getRoleMaster() {
-		return roleMaster;
-	}
-	public void setRoleMaster(RoleMaster roleMaster) {
-		this.roleMaster = roleMaster;
-	}
-	
+
 	public String getGender() {
 		return gender;
 	}
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	public Date getBirthdate() {
 		return birthdate;
 	}
+
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
+
+	public Date getJoiningDate() {
+		return joiningDate;
+	}
+
+	public void setJoiningDate(Date joiningDate) {
+		this.joiningDate = joiningDate;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmpProjectStatus() {
+		return empProjectStatus;
+	}
+
+	public void setEmpProjectStatus(String empProjectStatus) {
+		this.empProjectStatus = empProjectStatus;
+	}
+
+	public String getJobType() {
+		return jobType;
+	}
+
+	public void setJobType(String jobType) {
+		this.jobType = jobType;
+	}
+
+	public DepartmentMaster getDeptdepMaster() {
+		return deptdepMaster;
+	}
+
+	public void setDeptdepMaster(DepartmentMaster deptdepMaster) {
+		this.deptdepMaster = deptdepMaster;
+	}
+
+	public DesignationMaster getDesignationMaster() {
+		return designationMaster;
+	}
+
+	public void setDesignationMaster(DesignationMaster designationMaster) {
+		this.designationMaster = designationMaster;
+	}
+
+	public RoleMaster getRoleMaster() {
+		return roleMaster;
+	}
+
+	public void setRoleMaster(RoleMaster roleMaster) {
+		this.roleMaster = roleMaster;
+	}
+
 	@Override
 	public String toString() {
 		return "EmployeeMaster [empOfficialId=" + empOfficialId + ", eName=" + eName + ", emailId=" + emailId
-				+ ", jobType=" + jobType + ", empId=" + empId + ", phone=" + phone + ", gender=" + gender
-				+ ", birthdate=" + birthdate + ", joiningDate=" + joiningDate + ", createdDate=" + createdDate
-				+ ", updatedDate=" + updatedDate + ", userName=" + userName + ", password=" + password
-				+ ", empProjectStatus=" + empProjectStatus + ", deptdepMaster=" + deptdepMaster + ", designationMaster="
+				+ ", empId=" + empId + ", phone=" + phone + ", gender=" + gender + ", birthdate=" + birthdate
+				+ ", joiningDate=" + joiningDate + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate
+				+ ", userName=" + userName + ", password=" + password + ", empProjectStatus=" + empProjectStatus
+				+ ", jobType=" + jobType + ", deptdepMaster=" + deptdepMaster + ", designationMaster="
 				+ designationMaster + ", roleMaster=" + roleMaster + "]";
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
 	
 		
 }

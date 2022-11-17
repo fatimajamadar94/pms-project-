@@ -1,5 +1,7 @@
 package com.yash.pms.model;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class ProjectStatus {
@@ -16,9 +22,14 @@ public class ProjectStatus {
 	private int projectStatusId;
 	private String workStatus;
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+	@JsonIgnore
 	private ProjectTeam projectTeam;
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+	@JsonIgnore
 	private EmployeeMaster employeeMaster;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date createdOn;
+
 	
 	
 	ProjectStatus(){
@@ -26,14 +37,17 @@ public class ProjectStatus {
 	}
 
 
-	public ProjectStatus(int projectStatusId, String workStatus, ProjectTeam projectTeam,
-			EmployeeMaster employeeMaster) {
+
+	public ProjectStatus(int projectStatusId, String workStatus, ProjectTeam projectTeam, EmployeeMaster employeeMaster,
+			Date createdOn) {
 		super();
 		this.projectStatusId = projectStatusId;
 		this.workStatus = workStatus;
 		this.projectTeam = projectTeam;
 		this.employeeMaster = employeeMaster;
+		this.createdOn = createdOn;
 	}
+
 
 
 	public int getProjectStatusId() {
@@ -75,12 +89,26 @@ public class ProjectStatus {
 		this.employeeMaster = employeeMaster;
 	}
 
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "ProjectStatus [projectStatusId=" + projectStatusId + ", workStatus=" + workStatus + ", projectTeam="
-				+ projectTeam + ", employeeMaster=" + employeeMaster + "]";
+				+ projectTeam + ", employeeMaster=" + employeeMaster + ", createdOn=" + createdOn + "]";
 	}
+
+
+
+
 	
 	
 	

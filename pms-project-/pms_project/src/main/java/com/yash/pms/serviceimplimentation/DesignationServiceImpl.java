@@ -47,4 +47,11 @@ public class DesignationServiceImpl implements DesignationService{
 			
 	}
 
+
+	@Override
+	public Optional<DesignationMaster> getDesignationById(int designId) {
+		// TODO Auto-generated method stub
+		return designationDao.findById(designId) ;
+	}
+
 }
