@@ -8,7 +8,7 @@ import com.yash.pms.model.TeamReqDto;
 
 public interface CreateTeamService  {
 
-	String addTeam(TeamReqDto projectTeam);
+	String addTeam(ProjectTeam projectTeam);
 
 	 List<ProjectTeam> getAllTeam();
 

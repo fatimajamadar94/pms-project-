@@ -1,6 +1,7 @@
 package com.yash.pms.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -50,51 +52,24 @@ public class EmployeeMaster {
 	@JoinColumn(name="roleId")
 	@JsonIgnore
 	private RoleMaster roleMaster;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+	private List<ProjectTeam> list;
+
+
 	
-	public EmployeeMaster(){
-		
+	
+	
+	
+	
+	private String empStatus;
+	public String getEmpStatus() {
+		return empStatus;
 	}
-
-	public EmployeeMaster(int empOfficialId, String eName, String emailId, String empId, String phone, String gender,
-			Date birthdate, Date joiningDate, Date createdDate, Date updatedDate, String userName, String password,
-			String empProjectStatus, String jobType, DepartmentMaster deptdepMaster,
-			DesignationMaster designationMaster, RoleMaster roleMaster) {
-		super();
-		this.empOfficialId = empOfficialId;
-		this.eName = eName;
-		this.emailId = emailId;
-		this.empId = empId;
-		this.phone = phone;
-		this.gender = gender;
-		this.birthdate = birthdate;
-		this.joiningDate = joiningDate;
-		this.createdDate = createdDate;
-		this.updatedDate = updatedDate;
-		this.userName = userName;
-		this.password = password;
-		this.empProjectStatus = empProjectStatus;
-		this.jobType = jobType;
-		this.deptdepMaster = deptdepMaster;
-		this.designationMaster = designationMaster;
-		this.roleMaster = roleMaster;
+	public void setEmpStatus(String empStatus) {
+		this.empStatus = empStatus;
 	}
-
-	public int getEmpOfficialId() {
-		return empOfficialId;
-	}
-
-	public void setEmpOfficialId(int empOfficialId) {
-		this.empOfficialId = empOfficialId;
-	}
-
-	public String geteName() {
-		return eName;
-	}
-
-	public void seteName(String eName) {
-		this.eName = eName;
-	}
-
+	
 	public String getEmailId() {
 		return emailId;
 	}

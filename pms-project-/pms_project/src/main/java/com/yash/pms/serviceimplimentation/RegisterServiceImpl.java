@@ -42,6 +42,8 @@ RegisterDao registerDao;
 		employee.setEmpId(employeeMaster.getEmailId());
 		employee.setBirthdate(employeeMaster.getBirthdate());
 		employee.setGender(employeeMaster.getGender());
+		employee.setEmpStatus("Active");
+		employee.setEmpProjectStatus("on pool");
 //		DesignationMaster designationMaster=new DesignationMaster();
 //		designationMaster.setDesignId(employeeMaster.getDeptdepMaster().getDeptId());
 		EmployeeMaster emp=registerDao.save(employee);
@@ -61,5 +63,9 @@ return list;
 	public void delete(EmployeeMaster employee) {
 registerDao.delete(employee);		
 	}
-
+		@Override
+		public List<EmployeeMaster> getActiveEmployee() {
+	List<EmployeeMaster> list=registerDao.emplList();
+	return list;
+		}
 }

@@ -114,4 +114,10 @@ public class RegisterationController {
 		response.put("deleted", Boolean.TRUE);
 		return response;
 	}
+	@GetMapping("/getActiveemployee")
+	public List<EmployeeMaster> getAllActiveEmployee(){
+	System.out.println("list of emp");
+		return registerService.getActiveEmployee();
+	
+	}
 }
